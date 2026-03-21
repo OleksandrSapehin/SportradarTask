@@ -1,3 +1,16 @@
 spring:
-  application:
-    name: sportradarTask
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sports_calendar_db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:db/sports_calendar_table.sql
