@@ -42,7 +42,7 @@ CREATE TABLE match_results (
                                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE events (
+CREATE TABLE events  (
                         id SERIAL PRIMARY KEY,
                         season INTEGER NOT NULL,
                         status match_status NOT NULL DEFAULT 'scheduled',

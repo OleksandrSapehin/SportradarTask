@@ -23,6 +23,7 @@ public class Event {
     @Column(name = "season", nullable = false)
     private Integer season;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false, length = 20)
     private MatchStatus status;
 

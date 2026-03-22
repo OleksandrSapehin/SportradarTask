@@ -4,5 +4,9 @@ public enum MatchStatus {
     PLAYED,
     SCHEDULED,
     POSTPONED,
-    CANCELLED
+    CANCELLED;
+
+    public String getValue() {
+        return name().toLowerCase();
+    }
 }

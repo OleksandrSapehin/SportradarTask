@@ -7,10 +7,10 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     show-sql: true
 
   sql:
     init:
-      mode: always
+      mode: embedded
       schema-locations: classpath:db/sports_calendar_table.sql
