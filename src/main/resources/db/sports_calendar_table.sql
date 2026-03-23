@@ -1,12 +1,17 @@
-CREATE TYPE match_status AS ENUM ('played', 'scheduled', 'postponed', 'cancelled');
+DO $$
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'match_status') THEN
+        CREATE TYPE match_status AS ENUM ('played', 'scheduled', 'postponed', 'cancelled');
+    END IF;
+END $$;
 
-CREATE TABLE sports (
+CREATE TABLE IF NOT EXISTS sports (
                         id SERIAL PRIMARY KEY,
                         name VARCHAR(50) NOT NULL UNIQUE,
                         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE teams (
+CREATE TABLE IF NOT EXISTS teams (
                        id SERIAL PRIMARY KEY,
                        name VARCHAR(100) NOT NULL,
                        official_name VARCHAR(100) NOT NULL,
@@ -16,7 +21,7 @@ CREATE TABLE teams (
                        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE venues (
+CREATE TABLE IF NOT EXISTS venues (
                         id SERIAL PRIMARY KEY,
                         name VARCHAR(100) NOT NULL,
                         city VARCHAR(100) NOT NULL,
@@ -25,14 +30,14 @@ CREATE TABLE venues (
                         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE stages (
+CREATE TABLE IF NOT EXISTS stages (
                         id SERIAL PRIMARY KEY,
                         name VARCHAR(100) NOT NULL,
                         ordering INTEGER,
                         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE match_results (
+CREATE TABLE IF NOT EXISTS match_results (
                                id SERIAL PRIMARY KEY,
                                home_goals INTEGER DEFAULT 0,
                                away_goals INTEGER DEFAULT 0,
@@ -42,7 +47,7 @@ CREATE TABLE match_results (
                                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE events  (
+CREATE TABLE IF NOT EXISTS events  (
                         id SERIAL PRIMARY KEY,
                         season INTEGER NOT NULL,
                         status match_status NOT NULL DEFAULT 'scheduled',

@@ -44,8 +44,8 @@ class DtoRecordsTest {
     @Test
     void testSportDtoEqualityAndHashCode() {
         // Given
-        SportDTO a = new SportDTO(5L, "Tennis");
-        SportDTO b = new SportDTO(5L, "Tennis");
+        SportDTO a = new SportDTO( "Tennis");
+        SportDTO b = new SportDTO( "Tennis");
 
         // When
         int hashA = a.hashCode();
@@ -58,11 +58,8 @@ class DtoRecordsTest {
 
     @Test
     void testTeamDtoAllowsNullNestedLists() {
-        // Given
-        Long id = 1L;
-
         // When
-        TeamDTO dto = new TeamDTO(id, "n", "official", "slug", "AB", "DE", null, null, null);
+        TeamDTO dto = new TeamDTO( "n", "official", "slug", "AB", "DE", null, null, null);
 
         // Then
         assertNull(dto.homeEvents(), "homeEvents should be null when not provided");
@@ -78,10 +75,10 @@ class DtoRecordsTest {
                 1L, "S", 1L, "H", "H", 2L, "A", "A",
                 null, null, null, 1, 0, "H", null, "C"
         );
-        MatchResultDTO mr = new MatchResultDTO(9L, 1, 0, 1L, "H", null);
+        MatchResultDTO mr = new MatchResultDTO( 1, 0, 1L, "H", null);
 
         // When
-        TeamDTO dto = new TeamDTO(1L, "n", "o", "s", "AB", "DE",
+        TeamDTO dto = new TeamDTO( "n", "o", "s", "AB", "DE",
                 List.of(event), List.of(), List.of(mr));
 
         // Then
@@ -93,9 +90,9 @@ class DtoRecordsTest {
     @Test
     void testStageVenueMatchResultDtoAccessors() {
         // Given
-        StageDTO stage = new StageDTO(1L, "Final", 3);
-        VenueDTO venue = new VenueDTO(2L, "Stadium", "Munich", "DE", 75000);
-        MatchResultDTO result = new MatchResultDTO(3L, 2, 2, null, null, "Draw");
+        StageDTO stage = new StageDTO( "Final", 3);
+        VenueDTO venue = new VenueDTO( "Stadium", "Munich", "DE", 75000);
+        MatchResultDTO result = new MatchResultDTO( 2, 2, null, null, "Draw");
 
         // When
         Integer ordering = stage.ordering();

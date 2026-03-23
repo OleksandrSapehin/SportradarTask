@@ -3,7 +3,6 @@ package org.example.sportradartask.dto;
 import java.util.List;
 
 public record TeamDTO(
-        Long id,
         String name,
         String officialName,
         String slug,

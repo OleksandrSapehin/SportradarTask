@@ -1,6 +1,8 @@
 package org.example.sportradartask.mapper;
 
 
+import org.mapstruct.MappingTarget;
+
 import java.util.List;
 
 public interface Mappable<E, D> {
@@ -10,4 +12,8 @@ public interface Mappable<E, D> {
     List<D> toDto(List<E> entities);
 
     E toEntity(D dto);
+
+    void updateEntityFromDto(D dto, @MappingTarget E entity);
+
+
 }

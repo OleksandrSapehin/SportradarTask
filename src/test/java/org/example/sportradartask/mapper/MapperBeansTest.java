@@ -1,16 +1,10 @@
-package org.example.sportradartask;
+package org.example.sportradartask.mapper;
 
 import org.example.sportradartask.dto.EventRequestDTO;
 import org.example.sportradartask.dto.SportDTO;
 import org.example.sportradartask.dto.StageDTO;
 import org.example.sportradartask.dto.TeamDTO;
 import org.example.sportradartask.dto.VenueDTO;
-import org.example.sportradartask.mapper.EventMapperImpl;
-import org.example.sportradartask.mapper.MatchResultMapperImpl;
-import org.example.sportradartask.mapper.SportMapperImpl;
-import org.example.sportradartask.mapper.StageMapperImpl;
-import org.example.sportradartask.mapper.TeamMapperImpl;
-import org.example.sportradartask.mapper.VenueMapperImpl;
 import org.example.sportradartask.model.Event;
 import org.example.sportradartask.model.MatchResult;
 import org.example.sportradartask.model.MatchStatus;
@@ -71,20 +65,18 @@ class MapperBeansTest {
         var dto = sportMapper.toDto(sport);
 
         // Then
-        assertEquals(1L, dto.id());
         assertEquals("Football", dto.name());
     }
 
     @Test
     void testSportToEntityMapsAllProperties() {
         // Given
-        var dto = new SportDTO(1L, "Football");
+        var dto = new SportDTO( "Football");
 
         // When
         Sport result = sportMapper.toEntity(dto);
 
         // Then
-        assertEquals(1L, result.getId());
         assertEquals("Football", result.getName());
     }
 
@@ -102,7 +94,6 @@ class MapperBeansTest {
         var dto = venueMapper.toDto(venue);
 
         // Then
-        assertEquals(10L, dto.id());
         assertEquals("Arena", dto.name());
         assertEquals("Berlin", dto.city());
         assertEquals("DE", dto.country());
@@ -112,13 +103,12 @@ class MapperBeansTest {
     @Test
     void testVenueToEntityMapsAllProperties() {
         // Given
-        var dto = new VenueDTO(10L, "Arena", "Berlin", "DE", 50000);
+        var dto = new VenueDTO("Arena", "Berlin", "DE", 50000);
 
         // When
         Venue result = venueMapper.toEntity(dto);
 
         // Then
-        assertEquals(10L, result.getId());
         assertEquals("Arena", result.getName());
         assertEquals("Berlin", result.getCity());
         assertEquals("DE", result.getCountry());
@@ -137,7 +127,6 @@ class MapperBeansTest {
         var dto = stageMapper.toDto(stage);
 
         // Then
-        assertEquals(3L, dto.id());
         assertEquals("Quarter-final", dto.name());
         assertEquals(2, dto.ordering());
     }
@@ -145,13 +134,12 @@ class MapperBeansTest {
     @Test
     void testStageToEntityMapsAllProperties() {
         // Given
-        var dto = new StageDTO(3L, "Quarter-final", 2);
+        var dto = new StageDTO( "Quarter-final", 2);
 
         // When
         Stage result = stageMapper.toEntity(dto);
 
         // Then
-        assertEquals(3L, result.getId());
         assertEquals("Quarter-final", result.getName());
         assertEquals(2, result.getOrdering());
     }
@@ -174,7 +162,6 @@ class MapperBeansTest {
         var dto = matchResultMapper.toDto(entity);
 
         // Then
-        assertEquals(100L, dto.id());
         assertEquals(3, dto.homeGoals());
         assertEquals(1, dto.awayGoals());
         assertEquals(7L, dto.winnerTeamId());
@@ -381,13 +368,12 @@ class MapperBeansTest {
     @Test
     void testTeamToEntityMapsAllProperties() {
         // Given
-        var dto = new TeamDTO(5L, "Name", "Official", "slug", "AB", "US", null, null, null);
+        var dto = new TeamDTO( "Name", "Official", "slug", "AB", "US", null, null, null);
 
         // When
         Team result = teamMapper.toEntity(dto);
 
         // Then
-        assertEquals(5L, result.getId());
         assertEquals("Name", result.getName());
         assertEquals("Official", result.getOfficialName());
         assertEquals("slug", result.getSlug());
@@ -416,7 +402,6 @@ class MapperBeansTest {
         var dto = teamMapper.toDto(team);
 
         // Then
-        assertEquals(8L, dto.id());
         assertEquals("Club", dto.name());
         assertEquals("Club Official", dto.officialName());
         assertEquals("club", dto.slug());

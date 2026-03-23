@@ -28,4 +28,15 @@ public class Sport {
 
     @OneToMany(mappedBy = "sport", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Event> events = new ArrayList<>();
+
+    public Sport(Long id, String name, LocalDateTime createdAt, List<Event> events) {
+        this.id = id;
+        this.name = name;
+        this.createdAt = createdAt;
+        this.events = events;
+    }
+
+    public Sport(String name) {
+        this.name = name;
+    }
 }

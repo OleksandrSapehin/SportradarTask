@@ -4,6 +4,7 @@ import org.example.sportradartask.dto.TeamDTO;
 import org.example.sportradartask.model.Team;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 import java.util.List;
 
@@ -23,4 +24,10 @@ public interface TeamMapper extends Mappable<Team, TeamDTO> {
     @Mapping(target = "awayEvents", ignore = true)
     @Mapping(target = "wonMatches", ignore = true)
     Team toEntity(TeamDTO teamDTO);
+
+    @Override
+    @Mapping(target = "homeEvents", ignore = true)
+    @Mapping(target = "awayEvents", ignore = true)
+    @Mapping(target = "wonMatches", ignore = true)
+    void updateEntityFromDto(TeamDTO teamDTO, @MappingTarget Team team);
 }

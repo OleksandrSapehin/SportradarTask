@@ -5,6 +5,7 @@ import org.example.sportradartask.dto.EventResponseDTO;
 import org.example.sportradartask.model.*;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 import java.util.List;
 
@@ -42,11 +43,6 @@ public interface EventMapper extends Mappable<Event, EventResponseDTO> {
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "status", expression = "java(org.example.sportradartask.model.MatchStatus.SCHEDULED)")
-    @Mapping(target = "sport", source = "sport")
-    @Mapping(target = "homeTeam", source = "homeTeam")
-    @Mapping(target = "awayTeam", source = "awayTeam")
-    @Mapping(target = "venue", source = "venue")
-    @Mapping(target = "stage", source = "stage")
     @Mapping(target = "result", ignore = true)
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
@@ -56,4 +52,17 @@ public interface EventMapper extends Mappable<Event, EventResponseDTO> {
                    Team awayTeam,
                    Venue venue,
                    Stage stage);
+
+    @Override
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "status", ignore = true)
+    @Mapping(target = "sport", ignore = true)
+    @Mapping(target = "homeTeam", ignore = true)
+    @Mapping(target = "awayTeam", ignore = true)
+    @Mapping(target = "venue", ignore = true)
+    @Mapping(target = "stage", ignore = true)
+    @Mapping(target = "result", ignore = true)
+    @Mapping(target = "createdAt", ignore = true)
+    @Mapping(target = "updatedAt", ignore = true)
+    void updateEntityFromDto(EventResponseDTO dto, @MappingTarget Event entity);
 }
