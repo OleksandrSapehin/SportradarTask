@@ -2,7 +2,7 @@ package org.example.sportradartask.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.example.sportradartask.exeptions.NotFoundException;
+import org.example.sportradartask.exceptions.NotFoundException;
 import org.example.sportradartask.dto.StageDTO;
 import org.example.sportradartask.service.StageService;
 import org.springframework.http.ResponseEntity;

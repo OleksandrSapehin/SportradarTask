@@ -1,0 +1,213 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #eef2f7;
+}
+.navbar {
+    background: #1e293b;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+.card {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.calendar-header button {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+    width: auto;
+}
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+.calendar-day {
+    text-align: center;
+    padding: 8px;
+    background: #f8fafc;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.calendar-day:hover {
+    background: #e2e8f0;
+}
+.calendar-day.has-event {
+    background: #3b82f6;
+    color: white;
+    font-weight: bold;
+}
+.calendar-day.selected {
+    background: #f59e0b;
+    color: white;
+}
+.calendar-weekday {
+    font-weight: bold;
+    background: #e2e8f0;
+    padding: 8px;
+    text-align: center;
+    border-radius: 6px;
+}
+select, input, button {
+    width: 100%;
+    padding: 8px 10px;
+    margin: 6px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+    background: white;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 60px;
+    line-height: 1.5;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+}
+button {
+    background: #3b82f6;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+button:hover {
+    background: #2563eb;
+}
+.inline-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.inline-form input {
+    width: auto;
+    flex: 1;
+    min-width: 120px;
+}
+.inline-form button {
+    width: auto;
+    padding: 8px 15px;
+}
+.filter-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+.filter-bar input, .filter-bar button {
+    width: auto;
+    margin: 0;
+}
+.event {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+    background: #f9f9f9;
+    border-radius: 6px;
+}
+.event strong {
+    font-size: 1.1em;
+    color: #1e293b;
+}
+.event-buttons {
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.event button {
+    width: auto;
+    padding: 5px 12px;
+    font-size: 12px;
+    margin: 0;
+}
+.delete-btn { background: #dc2626; }
+.edit-btn { background: #3b82f6; }
+.status-btn { background: #f59e0b; }
+.result-btn { background: #10b981; }
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+.modal-content {
+    background: white;
+    margin: 10% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 8px;
+}
+.close {
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close:hover {
+    color: red;
+}
+.status {
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 12px;
+    background: #e2e8f0;
+    display: inline-block;
+}
+@media (max-width: 768px) {
+    .calendar-grid {
+        gap: 2px;
+    }
+    .calendar-day {
+        padding: 4px;
+        font-size: 12px;
+    }
+    .inline-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .inline-form input, .inline-form button {
+        width: 100%;
+    }
+    .filter-bar {
+        flex-wrap: wrap;
+    }
+}

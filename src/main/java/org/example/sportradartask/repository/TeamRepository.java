@@ -16,7 +16,6 @@ public interface TeamRepository extends JpaRepository<Team,Long> {
 
     List<Team> findByCountryCode(String countryCode);
 
-    List<Team> findByNameContainingIgnoreCase(String name);
 
     @Query("SELECT t FROM Team t WHERE t.name LIKE %:keyword% OR t.officialName LIKE %:keyword%")
     List<Team> searchByKeyword(@Param("keyword") String keyword);

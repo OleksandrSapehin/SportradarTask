@@ -10,9 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import tools.jackson.databind.ObjectMapper;
-
 import java.util.List;
-import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
@@ -77,56 +75,6 @@ class VenueControllerTest {
                 .andExpect(jsonPath("$.name").value("Emirates Stadium"))
                 .andExpect(jsonPath("$.capacity").value(60000));
     }
-
-    // GET /api/venues/by-name/{name}
-    @Test
-    void shouldReturnVenueByName() throws Exception {
-        // Given
-        given(venueService.findByName("Emirates Stadium")).willReturn(Optional.of(venue));
-
-        // When & Then
-        mockMvc.perform(get("/api/venues/by-name/Emirates Stadium"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.city").value("London"));
-    }
-
-    // GET /api/venues/by-city/{city}
-    @Test
-    void shouldReturnVenuesByCity() throws Exception {
-        // Given
-        given(venueService.findByCity("London")).willReturn(List.of(venue));
-
-        // When & Then
-        mockMvc.perform(get("/api/venues/by-city/London"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].city").value("London"));
-    }
-
-    // GET /api/venues/by-country/{country}
-    @Test
-    void shouldReturnVenuesByCountry() throws Exception {
-        // Given
-        given(venueService.findByCountry("ENG")).willReturn(List.of(venue));
-
-        // When & Then
-        mockMvc.perform(get("/api/venues/by-country/ENG"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].country").value("ENG"));
-    }
-
-    // GET /api/venues/by-city-and-country/{city}/{country}
-    @Test
-    void shouldReturnVenuesByCityAndCountry() throws Exception {
-        // Given
-        given(venueService.findByCityAndCountry("London", "ENG")).willReturn(List.of(venue));
-
-        // When & Then
-        mockMvc.perform(get("/api/venues/by-city-and-country/London/ENG"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].city").value("London"))
-                .andExpect(jsonPath("$[0].country").value("ENG"));
-    }
-
     // POST /api/venues
     @Test
     void shouldCreateVenue() throws Exception {

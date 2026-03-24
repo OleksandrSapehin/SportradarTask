@@ -1,6 +1,7 @@
 package org.example.sportradartask.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,6 +15,7 @@ import java.time.LocalTime;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Event {
 
     @Id
@@ -69,21 +71,4 @@ public class Event {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    public Event(Long id, Integer season, MatchStatus status, LocalDate eventDate, LocalTime eventTime, Sport sport, Team homeTeam, Team awayTeam, Venue venue, Stage stage, MatchResult result, String competitionName, String description, LocalDateTime createdAt, LocalDateTime updatedAt) {
-        this.id = id;
-        this.season = season;
-        this.status = status;
-        this.eventDate = eventDate;
-        this.eventTime = eventTime;
-        this.sport = sport;
-        this.homeTeam = homeTeam;
-        this.awayTeam = awayTeam;
-        this.venue = venue;
-        this.stage = stage;
-        this.result = result;
-        this.competitionName = competitionName;
-        this.description = description;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
 }

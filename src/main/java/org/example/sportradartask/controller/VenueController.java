@@ -2,7 +2,6 @@ package org.example.sportradartask.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.example.sportradartask.exeptions.NotFoundException;
 import org.example.sportradartask.dto.VenueDTO;
 import org.example.sportradartask.service.VenueService;
 import org.springframework.http.ResponseEntity;
@@ -16,29 +15,6 @@ import java.util.List;
 public class VenueController {
 
     private final VenueService venueService;
-
-   /* @GetMapping("/by-name/{name}")
-    public VenueDTO getByName(@PathVariable String name) {
-        return venueService.findByName(name).orElseThrow(() -> new NotFoundException("Venue not found: " + name));
-    }
-
-    @GetMapping("/by-city/{city}")
-    public List<VenueDTO> getByCity(@PathVariable String city) {
-        return venueService.findByCity(city);
-    }
-
-    @GetMapping("/by-country/{country}")
-    public List<VenueDTO> getByCountry(@PathVariable String country) {
-        return venueService.findByCountry(country);
-    }
-
-    @GetMapping("/by-city-and-country/{city}/{country}")
-    public List<VenueDTO> getByCityAndCountry(
-            @PathVariable String city,
-            @PathVariable String country
-    ) {
-        return venueService.findByCityAndCountry(city, country);
-    }*/
 
     @GetMapping
     public List<VenueDTO> getAll() {

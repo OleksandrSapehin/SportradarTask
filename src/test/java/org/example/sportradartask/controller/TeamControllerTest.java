@@ -153,9 +153,16 @@ class TeamControllerTest {
 
     // POST /api/teams
     @Test
-    void shouldCreateTeamUsingDTO() throws Exception {
+    void shouldCreateTeam() throws Exception {
         // Given
-        TeamDTO request = new TeamDTO(
+        TeamRequestDTO request = new TeamRequestDTO(
+                "Liverpool",
+                "liverpool",
+                "LIV",
+                "ENG"
+        );
+
+        TeamDTO response = new TeamDTO(
                 "Liverpool",
                 "Liverpool FC",
                 "liverpool",
@@ -165,24 +172,24 @@ class TeamControllerTest {
                 List.of(),
                 List.of()
         );
-        TeamDTO saved = new TeamDTO(
-                "Liverpool",
-                "Liverpool FC",
-                "liverpool",
-                "LIV",
-                "ENG",
-                List.of(),
-                List.of(),
-                List.of()
-        );
-        given(teamService.create(any())).willReturn(saved);
+
+        given(teamService.createTeam(
+                anyString(),
+                anyString(),
+                anyString(),
+                anyString()
+        )).willReturn(response);
 
         // When & Then
-        mockMvc.perform(post("/api/teams")
+        mockMvc.perform(post("/api/teams/create")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.officialName").value("Liverpool FC"));
+                .andExpect(jsonPath("$.name").value("Liverpool"))
+                .andExpect(jsonPath("$.officialName").value("Liverpool FC"))
+                .andExpect(jsonPath("$.slug").value("liverpool"))
+                .andExpect(jsonPath("$.abbreviation").value("LIV"))
+                .andExpect(jsonPath("$.countryCode").value("ENG"));
     }
 
     // PUT /api/teams/{id}

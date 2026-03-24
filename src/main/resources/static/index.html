@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <h2>⚽ Event Calendar</h2>
+</nav>
+
+<div class="container">
+    <div class="card">
+        <div class="calendar-header">
+            <button id="prevMonth">&lt;</button>
+            <h3 id="monthYear"></h3>
+            <button id="nextMonth">&gt;</button>
+        </div>
+        <div class="calendar-grid" id="calendarGrid"></div>
+    </div>
+
+    <!-- Create Event -->
+    <div class="card">
+        <h3>Create Event</h3>
+        <form id="eventForm">
+            <label>Sport</label>
+            <select id="sport"></select>
+
+            <label>Home Team</label>
+            <select id="homeTeam"></select>
+
+            <label>Away Team</label>
+            <select id="awayTeam"></select>
+
+            <label>Venue</label>
+            <select id="venue"></select>
+
+            <label>Season</label>
+            <input type="number" id="season" placeholder="Season (e.g., 2024)" required>
+
+            <label>Competition Name (optional)</label>
+            <input type="text" id="competitionName" placeholder="Competition name">
+
+            <label>Description (optional)</label>
+            <textarea id="description" rows="3" placeholder="Event description"></textarea>
+
+            <label>Date</label>
+            <input type="datetime-local" id="dateTime" required>
+
+            <button type="submit">Create Event</button>
+        </form>
+    </div>
+
+    <!-- Create Enities -->
+    <div class="card">
+        <h3>Create Entities</h3>
+        <div class="entity-forms">
+            <form id="sportForm" class="inline-form">
+                <input type="text" id="sportName" placeholder="Sport name" required>
+                <button type="submit">Add Sport</button>
+            </form>
+            <form id="venueForm" class="inline-form">
+                <input type="text" id="venueName" placeholder="Name" required>
+                <input type="text" id="venueCity" placeholder="City" required>
+                <input type="text" id="venueCountry" placeholder="Country" required>
+                <input type="number" id="venueCapacity" placeholder="Capacity" required>
+                <button type="submit">Add Venue</button>
+            </form>
+            <form id="stageForm" class="inline-form">
+                <input type="text" id="stageName" placeholder="Stage name" required>
+                <input type="number" id="stageOrdering" placeholder="Ordering" required>
+                <button type="submit">Add Stage</button>
+            </form>
+            <form id="teamForm" class="inline-form">
+                <input type="text" id="teamName" placeholder="Name" required>
+                <input type="text" id="teamSlug" placeholder="Slug" required>
+                <input type="text" id="teamAbbreviation" placeholder="Abbr" required>
+                <input type="text" id="teamCountryCode" placeholder="Country Code" required>
+                <button type="submit">Add Team</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Events</h3>
+        <div class="filter-bar">
+            <input type="text" id="sportFilter" placeholder="Filter by sport" list="sportList">
+            <datalist id="sportList"></datalist>
+            <input type="date" id="dateFilter">
+            <button onclick="applyFilters()">Apply</button>
+            <button onclick="loadEvents()">Reset</button>
+        </div>
+        <div id="eventsContainer"></div>
+    </div>
+</div>
+
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Edit Event</h3>
+        <select id="editSport"></select>
+        <select id="editHomeTeam"></select>
+        <select id="editAwayTeam"></select>
+        <select id="editVenue"></select>
+        <input type="number" id="editSeason" placeholder="Season">
+        <input type="text" id="editCompetitionName" placeholder="Competition Name">
+        <textarea id="editDescription" rows="3" placeholder="Description"></textarea>
+        <input type="datetime-local" id="editDateTime">
+        <button onclick="updateEvent()">Update</button>
+    </div>
+</div>
+
+<div id="statusModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Change Status</h3>
+        <select id="statusSelect">
+            <option value="SCHEDULED">SCHEDULED</option>
+            <option value="PLAYED">PLAYED</option>
+            <option value="POSTPONED">POSTPONED</option>
+            <option value="CANCELLED">CANCELLED</option>
+        </select>
+        <button onclick="updateStatus()">Update</button>
+    </div>
+</div>
+
+<div id="resultModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Add Result</h3>
+        <input type="number" id="homeGoals" placeholder="Home Goals">
+        <input type="number" id="awayGoals" placeholder="Away Goals">
+        <select id="winnerTeamId"></select>
+        <textarea id="resultMessage" placeholder="Message (optional)"></textarea>
+        <button onclick="addResult()">Save</button>
+    </div>
+</div>
+
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

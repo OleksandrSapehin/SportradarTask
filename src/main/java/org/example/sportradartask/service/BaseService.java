@@ -1,7 +1,7 @@
 package org.example.sportradartask.service;
 
 
-import org.example.sportradartask.exeptions.NotFoundException;
+import org.example.sportradartask.exceptions.NotFoundException;
 import org.example.sportradartask.mapper.Mappable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;

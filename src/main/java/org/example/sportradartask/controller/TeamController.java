@@ -3,7 +3,7 @@ package org.example.sportradartask.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.sportradartask.dto.TeamRequestDTO;
-import org.example.sportradartask.exeptions.NotFoundException;
+import org.example.sportradartask.exceptions.NotFoundException;
 import org.example.sportradartask.dto.TeamDTO;
 import org.example.sportradartask.service.TeamService;
 import org.springframework.http.ResponseEntity;

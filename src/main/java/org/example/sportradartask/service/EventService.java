@@ -3,7 +3,7 @@ package org.example.sportradartask.service;
 import lombok.RequiredArgsConstructor;
 import org.example.sportradartask.dto.EventRequestDTO;
 import org.example.sportradartask.dto.EventResponseDTO;
-import org.example.sportradartask.exeptions.NotFoundException;
+import org.example.sportradartask.exceptions.NotFoundException;
 import org.example.sportradartask.mapper.EventMapper;
 import org.example.sportradartask.model.*;
 import org.example.sportradartask.repository.*;

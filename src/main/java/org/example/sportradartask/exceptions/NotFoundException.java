@@ -1,4 +1,4 @@
-package org.example.sportradartask.exeptions;
+package org.example.sportradartask.exceptions;
 
 public class NotFoundException extends RuntimeException {
     public NotFoundException(String message) {

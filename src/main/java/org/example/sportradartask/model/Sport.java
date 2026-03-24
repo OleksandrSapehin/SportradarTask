@@ -1,6 +1,7 @@
 package org.example.sportradartask.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,6 +15,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Sport {
 
     @Id
@@ -28,13 +30,6 @@ public class Sport {
 
     @OneToMany(mappedBy = "sport", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Event> events = new ArrayList<>();
-
-    public Sport(Long id, String name, LocalDateTime createdAt, List<Event> events) {
-        this.id = id;
-        this.name = name;
-        this.createdAt = createdAt;
-        this.events = events;
-    }
 
     public Sport(String name) {
         this.name = name;

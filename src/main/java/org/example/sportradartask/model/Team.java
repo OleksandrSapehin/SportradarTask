@@ -1,6 +1,7 @@
 package org.example.sportradartask.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,6 +15,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Team {
 
     @Id
@@ -47,13 +49,4 @@ public class Team {
     @OneToMany(mappedBy = "winnerTeam", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<MatchResult> wonMatches = new ArrayList<>();
 
-    public Team(Long id, String name, String officialName, String slug, String abbreviation, String countryCode, LocalDateTime createdAt) {
-        this.id = id;
-        this.name = name;
-        this.officialName = officialName;
-        this.slug = slug;
-        this.abbreviation = abbreviation;
-        this.countryCode = countryCode;
-        this.createdAt = createdAt;
-    }
 }
